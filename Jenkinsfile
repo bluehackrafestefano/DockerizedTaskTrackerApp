@@ -1,8 +1,8 @@
 #!groovy
 pipeline {
-        // agent {
-        //     docker { image 'python:3.9' }
-        // }
+        agent {
+            none
+        }
         stages {
             stage('Build') {
                 steps {
