@@ -1,25 +1,25 @@
 #!groovy
 pipeline {
-        agent {
-            none
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'docker compose up api'
+            }
         }
-        stages {
-            stage('Build') {
-                steps {
-                    sh 'docker compose up api'
-                }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'docker exec api python manage.py test'
             }
-
-            stage('Test') {
-                steps {
-                    sh 'docker exec api python manage.py test'
-                }
-            }
-
-            stage('Deploy') {
-                steps {
-                    sh 'echo not yet...'
-                }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                sh 'echo not yet...'
             }
         }
     }
+}
