@@ -30,6 +30,7 @@ services:
     env_file:
       - ./api/.env
     image: django_image
+    container_name: api
     ports:
       - 8000:8000
     restart: "on-failure"
